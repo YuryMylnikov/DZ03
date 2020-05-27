@@ -12,8 +12,8 @@ class SortedList
 	struct Node
 	{
 		T val;
-		Node* next;
 		bool isEnd;
+		Node* next;
 
 		using value_type = T;
 		using ref_type = T&;
