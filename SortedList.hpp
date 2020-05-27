@@ -13,13 +13,12 @@ class SortedList
 	{
 		T val;
 		Node* next;
+		bool isEnd;
 
 		using value_type = T;
 		using ref_type = T&;
 
-		Node(T val, bool _isEnd) :val{ val }, isEnd{ _isEnd }, next{ nullptr } {};
-
-		bool isEnd;
+		Node(T _val, bool _isEnd) :val{ _val }, isEnd{ _isEnd }, next{ nullptr } {};
 	};
 
 	using iterator = SortedListIterator<Node>;
