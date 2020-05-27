@@ -3,10 +3,10 @@
 #include "MemmoryPool.hpp"
 
 
-template<typename T>
+template<typename T, size_t N = InstanceCount>
 struct BlockAllocator 
 {
-	static MemmoryPool<T> pool;
+	static MemmoryPool<T, N> pool;
 
 	using value_type = T;
 
@@ -21,7 +21,7 @@ struct BlockAllocator
 	template<typename U>
 	struct rebind 
 	{
-		using other = BlockAllocator<U>;
+		using other = BlockAllocator<U, N>;
 	};
 
 	BlockAllocator() = default;
@@ -47,19 +47,19 @@ struct BlockAllocator
 };
 
 
-template<typename T>
-MemmoryPool<T> BlockAllocator<T>::pool{};
+template<typename T, size_t N>
+MemmoryPool<T, N> BlockAllocator<T, N>::pool{};
 
 
-template<typename T>
-typename BlockAllocator<T>::size_type BlockAllocator<T>::max_size() const
+template<typename T, size_t N>
+typename BlockAllocator<T, N>::size_type BlockAllocator<T, N>::max_size() const
 {
 	return std::numeric_limits<size_type>::max();
 }
 
 
-template<typename T>
-typename BlockAllocator<T>::pointer BlockAllocator<T>::allocate(std::size_t n)
+template<typename T, size_t N>
+typename BlockAllocator<T, N>::pointer BlockAllocator<T, N>::allocate(std::size_t n)
 {
 	//std::cout << __func__ << " [n = " << n << "]" << std::endl;
 
@@ -74,8 +74,8 @@ typename BlockAllocator<T>::pointer BlockAllocator<T>::allocate(std::size_t n)
 }
 
 
-template<typename T>
-void BlockAllocator<T>::deallocate(pointer p, std::size_t /* n */)
+template<typename T, size_t N>
+void BlockAllocator<T, N>::deallocate(pointer p, std::size_t /* n */)
 {
 	//std::cout << __func__ << " [n  = " << n << "] " << std::endl;
 
@@ -83,18 +83,18 @@ void BlockAllocator<T>::deallocate(pointer p, std::size_t /* n */)
 }
 
 
-template<typename T>
+template<typename T, size_t N>
 template<typename U, typename ...Args>
-void BlockAllocator<T>::construct(U *p, Args &&...args)
+void BlockAllocator<T, N>::construct(U *p, Args &&...args)
 {
 	//std::cout << __func__ << std::endl;
 	new(p) U(std::forward<Args>(args)...);
-}
+};
 
 
-template<typename T>
+template<typename T, size_t N>
 template<typename U>
-void BlockAllocator<T>::destroy(U *p)
+void BlockAllocator<T, N>::destroy(U *p)
 {
 	//std::cout << __func__ << std::endl;
 	p->~U();
