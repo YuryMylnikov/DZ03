@@ -17,7 +17,7 @@ class SortedList
 		using value_type = T;
 		using ref_type = T&;
 
-		Node(T val, bool isEnd) :val{ val }, isEnd{ isEnd }, next{ nullptr } {};
+		Node(T val, bool _isEnd) :val{ val }, isEnd{ _isEnd }, next{ nullptr } {};
 
 		bool isEnd;
 	};
