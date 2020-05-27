@@ -89,7 +89,7 @@ void BlockAllocator<T>::construct(U *p, Args &&...args)
 {
 	//std::cout << __func__ << std::endl;
 	new(p) U(std::forward<Args>(args)...);
-};
+}
 
 
 template<typename T>
