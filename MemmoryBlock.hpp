@@ -192,7 +192,7 @@ MemmoryBlock<T, N>& MemmoryBlock<T, N>::operator=(const MemmoryBlock& blc)
 	m_pHead = new uint8_t[m_szBlock];
 	m_pRaw = m_pHead;
 
-	std::memmove(m_pHead, blc.m_pHead, m_szBlock);
+	memmove(m_pHead, blc.m_pHead, m_szBlock);
 
 	return *this;
 }
