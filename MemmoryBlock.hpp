@@ -39,7 +39,7 @@ private:
 
 
 template<typename T, size_t N>
-MemmoryBlock<T, N>::MemmoryBlock() : m_pHead{ nullptr }, m_pRaw{ nullptr }, m_szInstances{ N }
+MemmoryBlock<T, N>::MemmoryBlock() : m_pRaw{ nullptr }, m_pHead{ nullptr },  m_szInstances{ N }
 {
 	m_szInstance = sizeof(T);
 
