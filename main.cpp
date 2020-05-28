@@ -57,14 +57,12 @@ int main()
 
 			for (int i = 0; i < 10; ++i)
 			{
-				slCont.Add(factorial(i));
+				slCont.Add(i);
 			}
-
-			int i{ 0 };
 
 			for (const int& it : slCont)
 			{
-				std::cout << i++ << " " << it << std::endl;
+				std::cout << it << std::endl;
 			}
 
 			std::cout << std::endl;
@@ -75,14 +73,12 @@ int main()
 
 			for (int i = 0; i < 10; ++i)
 			{
-				slCont.Add(factorial(i));
+				slCont.Add(i);
 			}
-
-			int i{ 0 };
 
 			for (const int& it : slCont)
 			{
-				std::cout << i++ << " " << it << std::endl;
+				std::cout << it << std::endl;
 			}
 		}
 	}
