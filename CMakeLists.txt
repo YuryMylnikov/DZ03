@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(UserAllocator VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+if($ENV{TRAVIS_BUILD_NUMBER})
+    set(VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+else()
+    set(VERSION 0.0.0)
+endif()
+
+project(UserAllocator VERSION ${VERSION})
 
 configure_file(version.h.in version.h)
 
@@ -24,10 +30,6 @@ endif()
 install(TARGETS UserAllocator RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
-
-set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
-set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
-set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT example@example.com)
 
