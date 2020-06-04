@@ -8,8 +8,6 @@ endif()
 
 project(UserAllocator VERSION ${VERSION})
 
-configure_file(version.h.in version.h)
-
 add_executable(UserAllocator main.cpp)
 
 set_target_properties(UserAllocator  PROPERTIES
