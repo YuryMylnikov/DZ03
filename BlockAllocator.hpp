@@ -30,7 +30,7 @@ struct BlockAllocator
 	template<typename U, size_t S>
 	BlockAllocator(const BlockAllocator<U, S>&) {}
 
-	~BlockAllocator() = default;
+	~BlockAllocator() = default; 
 
 	BlockAllocator& operator=(const BlockAllocator& other) = default;
 
