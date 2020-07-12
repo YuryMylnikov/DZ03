@@ -27,8 +27,8 @@ struct BlockAllocator
 	BlockAllocator() = default;
 	BlockAllocator(const BlockAllocator&) = default;
 
-	template<typename U>
-	BlockAllocator(const BlockAllocator<U>&) {}
+	template<typename U, size_t S>
+	BlockAllocator(const BlockAllocator<U, S>&) {}
 
 	~BlockAllocator() = default;
 
