@@ -62,56 +62,13 @@ SortedListIterator<T>& SortedListIterator<T>::operator++()
 template<typename T>
 class SortedListIterator<const T> : public SortedListIterator<T>
 {
-	using pointer = typename std::iterator_traits<SortedListIterator>::pointer;
-
-	pointer p;
-
 public:
-	SortedListIterator(pointer p);
-	SortedListIterator(const SortedListIterator& it);
-
-	bool operator!=(const SortedListIterator& other) const;
-	bool operator==(const SortedListIterator& other) const;
-
 	typename T::value_type operator*() const;
-
-	SortedListIterator& operator++();
 };
-
-
-template<typename T>
-SortedListIterator<const T>::SortedListIterator(pointer p) : p{ p } {}
-
-
-template<typename T>
-SortedListIterator<const T>::SortedListIterator(const SortedListIterator &it) : p{ it.p } {}
-
-
-template<typename T>
-bool SortedListIterator<const T>::operator==(const SortedListIterator& other) const
-{
-	return p == other.p;
-}
-
-
-template<typename T>
-bool SortedListIterator<const T>::operator!=(const SortedListIterator& other) const
-{
-	return !(*this == other);
-}
 
 
 template<typename T>
 typename T::value_type SortedListIterator<const T>::operator*() const
 {
-	return p->val;
-}
-
-
-template<typename T>
-SortedListIterator<const  T>& SortedListIterator<const T>::operator++()
-{
-	p = p->next;
-
-	return *this;
+	return SortedListIterator<T>::p->val;
 }
