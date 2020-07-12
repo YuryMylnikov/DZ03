@@ -60,7 +60,7 @@ SortedListIterator<T>& SortedListIterator<T>::operator++()
 
 
 template<typename T>
-class SortedListIterator<const T> : public std::iterator<std::input_iterator_tag, T>
+class SortedListIterator<const T> : public SortedListIterator<T>
 {
 	using pointer = typename std::iterator_traits<SortedListIterator>::pointer;
 
